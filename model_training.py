@@ -29,8 +29,10 @@ pd.DataFrame(cosine_sim).to_csv('cosine_sim.csv', index=False, header=False)
 # read the cosine similarity matrix
 cosine_sim = pd.read_csv('cosine_sim.csv', header=None)
 
-# create a series of product names
+# create a series of product names, descriptions, and prices
 product_names = pd.Series(df['Product Name'])
+product_descriptions = pd.Series(df['Description'])
+product_price = pd.Series(df['Price'])
 
 
 # function to recommend products based on user query
