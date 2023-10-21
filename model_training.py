@@ -46,10 +46,13 @@ def recommend_products(query):
     indices = similarity_scores.argsort()[0][-3:]
     # get the product names corresponding to the indices
     product_names = df['Product Name'].iloc[indices]
+    print("The most similar products are: ")
+    product_names = product_names.to_string(index=False)
+
     # return the product names
     return product_names
 
 
 # test the function
-recommend_products('leather')
-recommend_products('Breathable')
+print(recommend_products('leather'))
+print(recommend_products('Breathable'))
