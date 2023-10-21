@@ -37,7 +37,8 @@ def recommend_products():
         product_info['name'] = product_names.iloc[i]
         product_info['description'] = product_descriptions.iloc[i]
         product_info['price'] = product_price.iloc[i]
-        product_info_list.append(product_info)
+        # arrange the product based on the similarity score, the most similar product will be on top
+        product_info_list.insert(0, product_info)
     # Return the product information as JSON
     return jsonify({'recommendations': product_info_list})
 
