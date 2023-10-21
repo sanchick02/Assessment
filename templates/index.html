@@ -2,39 +2,16 @@
 <html>
 <head>
     <title>Product Recommendations</title>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
 </head>
 <body>
     <h1>Product Recommendations</h1>
-    <input type="text" id="query" placeholder="Enter your query">
-    <button id="submit">Submit</button>
+    <div class="search-container">
+        <input type="text" id="query" placeholder="Enter your query" oninput="showSuggestions()" />
+        <div id="suggestions" class="suggestions-container"></div>
+    </div>
+    <button onclick="recommendProducts()">Recommend Products</button>
     <div id="recommendations"></div>
-
-    <script>
-        document.getElementById('submit').addEventListener('click', function () {
-            const query = document.getElementById('query').value;
-            fetch('/recommend', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ query })
-            })
-            .then(response => response.json())
-            .then(data => {
-                const recommendations = document.getElementById('recommendations');
-                recommendations.innerHTML = '';
-
-                data.forEach(product => {
-                    recommendations.innerHTML += `
-                        <div>
-                            <h3>${product['Product Name']}</h3>
-                            <p>${product['Description']}</p>
-                            <p>Price: $${product['Price']}</p>
-                        </div>
-                    `;
-                });
-            });
-        });
-    </script>
+    <script src="static/script.js"></script>
 </body>
 </html>
