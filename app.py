@@ -2,7 +2,7 @@ import webbrowser
 from flask import Flask, render_template, request, jsonify
 from sklearn.metrics.pairwise import cosine_similarity
 from model_training import tfidf_matrix
-from file import tfidf_vectorizer, df
+from model_training import df, tfidf
 
 app = Flask(__name__)
 
@@ -20,7 +20,7 @@ def recommend_products():
     # Access the user query from the JavaScript code in index.html
     user_query = request.get_json().get('query')
     # Transform the user query
-    user_query = tfidf_vectorizer.transform([user_query])
+    user_query = tfidf.transform([user_query])
     # Compute the cosine similarity between the user query and all product descriptions
     similarity_scores = cosine_similarity(user_query, tfidf_matrix)
     # Get the indices of the top 3 most similar products
@@ -45,7 +45,6 @@ def recommend_products():
 @app.route('/get_suggestions', methods=['POST'])
 def get_suggestions():
     user_query = request.get_json().get('query')
-    # You can use various methods such as keyword matching or search algorithms.
     # For now, we will return the first 5 product names that contain the user query.
     suggestions = df[df['Product Name'].str.contains(user_query, case=False)]['Product Name'].iloc[:5].tolist()
     return jsonify({'suggestions': suggestions})

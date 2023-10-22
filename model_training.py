@@ -8,7 +8,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # read the processed data
-df = pd.read_csv('processed_data.csv')
+df = pd.read_csv('datasets/processed_data.csv')
 
 # create a tfidf vectorizer object
 tfidf = TfidfVectorizer()
@@ -23,10 +23,10 @@ tfidf_matrix = tfidf.transform(df['Tokenized_Description'])
 cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
 
 # save the cosine similarity matrix to a csv file
-pd.DataFrame(cosine_sim).to_csv('cosine_sim.csv', index=False, header=False)
+pd.DataFrame(cosine_sim).to_csv('datasets/cosine_sim.csv', index=False, header=False)
 
 # read the cosine similarity matrix
-cosine_sim = pd.read_csv('cosine_sim.csv', header=None)
+cosine_sim = pd.read_csv('datasets/cosine_sim.csv', header=None)
 
 # create a series of product names, descriptions, and prices
 product_names = pd.Series(df['Product Name'])
