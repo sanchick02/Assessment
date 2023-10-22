@@ -24,6 +24,7 @@
 8. The `static` folder contains the CSS and JS files for the web application.
 9. The `requirements.txt` file contains the list of all the required packages for the project.
 10. The `README.md` file contains the documentation for the project.
+11. The `assessment_documentation.ipynb` file contains the documentation for the project in the form of a Jupyter Notebook.
 
 ### Libraries used:
 1. Flask
