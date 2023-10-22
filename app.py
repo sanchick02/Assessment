@@ -1,9 +1,8 @@
+import webbrowser
 from flask import Flask, render_template, request, jsonify
 from sklearn.metrics.pairwise import cosine_similarity
-import model_training
 from model_training import tfidf_matrix
 from file import tfidf_vectorizer, df
-import pandas as pd
 
 app = Flask(__name__)
 
@@ -46,8 +45,6 @@ def recommend_products():
 @app.route('/get_suggestions', methods=['POST'])
 def get_suggestions():
     user_query = request.get_json().get('query')
-
-    # Implement your logic to generate suggestions based on user_query here.
     # You can use various methods such as keyword matching or search algorithms.
     # For now, we will return the first 5 product names that contain the user query.
     suggestions = df[df['Product Name'].str.contains(user_query, case=False)]['Product Name'].iloc[:5].tolist()
@@ -55,4 +52,9 @@ def get_suggestions():
 
 
 if __name__ == '__main__':
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
+    # open http://127.0.0.1:5000/ in the browser
+    webbrowser.open('http://127.0.0.1:5000')
     app.run(debug=True)
+
+

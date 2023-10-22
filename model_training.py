@@ -1,6 +1,5 @@
 # import libraries
 import pandas as pd
-import nltk
 from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
