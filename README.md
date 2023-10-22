@@ -3,15 +3,15 @@
 
 ### All the requirements in the PDF has been implemented and can be seen in the final output.
 
-### The following are the steps to setup the project and run the code:
+### The following are the steps to set up the project and run the code:
 1. Clone the repository or download the zip file.
 2. Install the requirements using the command `pip install -r requirements.txt`.
 3. Run the command `python data_processing.py` to process the data.
 4. Run the command `python model_training.py` to train the model.
-4. Run the command `python app.py` to run the web application.
-4. Open the browser and go to the link `http://127.0.0.1:5000/`.
-5. Enter the query in the text box and click on the `Submit` button.
-6. The output will be displayed on the screen.
+5. Run the command `python app.py` to run the web application.
+6. Open the browser and go to the link `http://127.0.0.1:5000/`.
+7. Enter the query in the text box and click on the `Submit` button.
+8. The output will be displayed on the screen.
 
 ### Any other pertinent documentation 
 1. The `datasets` folder contains the dataset used for training the model.
