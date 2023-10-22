@@ -6,7 +6,7 @@ warnings.filterwarnings('ignore')
 df = pd.read_csv('datasets/processed_data.csv')
 df.head()
 
-# tokenize the product descriptions so that the model can understand the text based on user query
+# tokenize the product descriptions
 df['Tokenized_Description'] = df['Description'].apply(word_tokenize)
 # convert all words to lowercase
 df['Tokenized_Description'] = df['Tokenized_Description'].apply(lambda x: [word.lower() for word in x])
@@ -18,4 +18,3 @@ df.to_csv('datasets/processed_data.csv', index=False, header=True)
 
 # read the processed data
 df_new = pd.read_csv('datasets/processed_data.csv')
-print(df_new.head())
